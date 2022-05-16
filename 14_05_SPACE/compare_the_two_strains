@@ -1,0 +1,21 @@
+compare_the_two_strains
+in /rds/general/user/ytt16/home/MetaMiner/results/space
+
+#the significant matches are the same (matching to the same spectra files)
+14_05_22_seq_ISSFR_3F/significant_matches.tsv 14_05_22_seq_JEM2/significant_matches.tsv
+
+#compare the all_matches.tsv
+wc -l 14_05_22_seq_ISSFR_3F/all_matches.tsv
+wc -l 14_05_22_seq_JEM2/all_matches.tsv
+#the number of lines are different (22261-22279)
+
+#compare the raw sequence
+diff -q JEM2.pacbio.fasta ISSFR_3F.pacbio.fasta
+Files JEM2.pacbio.fasta and ISSFR_3F.pacbio.fasta differ
+
+--------------------------------------------------------
+#the results are different when all sequences are included by just specifying the diretory
+#these files are created by grep sequence-00004/00005
+space/analysis/ISSFR_3F_pooled.txt
+space/analysis/JEM2_pooled.txt
+#failed at genome analysis

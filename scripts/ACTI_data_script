@@ -1,0 +1,50 @@
+ACTI_data_script
+#bin path
+cd /rds/general/user/ytt16/home/MetaMiner/NPDtools-2.5.0-Linux/bin
+
+module load anaconda3/personal
+-------------------------------------------------
+#12 May- HPC
+ACTI dataset
+#run only the Streptomyces_roseosporus strain
+1. antismash- 28 regions found https://antismash.secondarymetabolites.org/upload/bacteria-43d042e1-e17a-4076-95e9-8b139493f507/index.html
+
+#three strains: Streptomyces roseosporous NRRL 15998, Streptomyces pristinaespiralis ATCC 25486, Bacillus subtilis subsp. subtilis NCIMB 3610
+2. metaminer- 
+/rds/general/user/ytt16/home/MetaMiner/data/msms/ACTI
+/rds/general/user/ytt16/home/MetaMiner/data/fasta/ACTI
+/rds/general/user/ytt16/home/MetaMiner/results/ACTI/12_05_22-1
+
+python metaminer.py /rds/general/user/ytt16/home/MetaMiner/data/msms/ACTI -s /rds/general/user/ytt16/home/MetaMiner/data/fasta/ACTI -o /rds/general/user/ytt16/home/MetaMiner/results/ACTI/12_05_22-1
+#running all three strains gives two signigicant matches on Streptomyces_roseosporus, one is the same as what the paper reports
+
+#try only Streptomyces_roseosporus
+python metaminer.py /rds/general/user/ytt16/home/MetaMiner/data/msms/ACTI -s /rds/general/user/ytt16/home/MetaMiner/data/fasta/ACTI/Streptomyces_roseosporus.fasta -o /rds/general/user/ytt16/home/MetaMiner/results/ACTI/16_05_22-1
+#one significant PSM but not on the paper, but the same as the extra one when three starins run together
+
+/rds/general/user/ytt16/home/MetaMiner/results/ACTI/16_05_22-1/work/metaminer.log
+
+-------------------------------------------------
+analysis
+#three strains- two significant
+RARSRAPSTSVAVGFSV (PDorr_0534_14Sep12_Lynx_12-06-05.mzXML)
+TVTVCSPTGTLCGSCSMGTRGCC(PDorr_0518_14Sep12_Lynx_12-06-05.mzXML)
+
+#one strain only- one signigicant
+RARSRAPSTSVAVGFSV (PDorr_0534_14Sep12_Lynx_12-06-05.mzXML)
+
+search for TVTVCSPTGTLCGSCSMGTRGCC in all_matches
+grep TVTVCSPTGTLCGSCSMGTRGCC /rds/general/user/ytt16/home/MetaMiner/results/ACTI/16_05_22-1/all_matches.tsv
+1. found in three different spectra files
+PDorr_0522_16Sep12_Lynx_12-07-02.mzXML
+PDorr_0528_16Sep12_Lynx_12-06-05.mzXML 
+PDorr_29083_14Sep12_Lynx_12-07-02.mzXML
+
+2. see if the file is in all_matches.tsv, because it's where it's found when all three strains are run together
+grep PDorr_0518_14Sep12_Lynx_12-06-05.mzXML /rds/general/user/ytt16/home/MetaMiner/results/ACTI/16_05_22-1/all_matches.tsv
+go to metaminer.log file to see what happened
+grep PDorr_0518_14Sep12_Lynx_12-06-05.mzXML metaminer.log
+to find out that it's been processed as spectra-00006
+look at spectra-00006_sequence-00000_lantibiotic_metaminer.log in work
+no error message
+
