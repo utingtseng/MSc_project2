@@ -1,0 +1,7 @@
+Download antismash
+conda activate antismash 
+#this is a virtual environment created to install antismash
+conda install -c bioconda antismash
+#use bioconda channel to install antismash
+#error solving the environment
+#have also tried installing antismash manually but failed 

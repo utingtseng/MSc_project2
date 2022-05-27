@@ -1,0 +1,3 @@
+#run prodigal
+./prodigal -i /rds/general/user/ytt16/home/MetaMiner/data/KI931730.1.fasta -o test_with_random_seq/test.genes -a test_with_random_seq/test.proteins.faa -p meta
+#need to be where the binary is installed, can specify the results to go in other directories
