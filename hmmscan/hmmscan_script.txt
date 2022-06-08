@@ -1,0 +1,18 @@
+source activate /rds/general/user/ytt16/home/anaconda3/envs/antismash
+output directory
+-o /rds/general/user/ytt16/home/TIGRFAM_HMM/out_dir
+
+model
+/rds/general/user/ytt16/home/TIGRFAM_HMM/cat_all.hmm.h3m
+test with only LAP 
+hmmscan -o /rds/general/user/ytt16/home/TIGRFAM_HMM/out_dir/test cat_all.hmm /rds/general/user/ytt16/home/NeuRiPP/out_dir/test_lstm/lstm_LAP_antismash_pos.fa
+
+#use hmmpress to create 4 binary files
+the second argument specifies the start of the four files instead of directly calling the files
+for example: if the unpressed file is call A, the output of hmmpress are A.h3m, A.h3i, A.h3f, A.h3p. To call these files just put A as the argument for database!!
+
+#it worked and all sequences are processed
+the output is a single file called test (as specified as -o flag)
+
+
+

@@ -1,9 +1,0 @@
-read_results
-
-#see the sequence files with signigicant PSM
-grep 'Number of significant PSMs' 14_05_22_seq*/summary.tsv
-
-#see all matches
-grep 'Number of all PSMs' 14_05_22_seq*/summary.tsv
-
-other files possibly failed at earlier stages so there are no summary.tsv in the corresponding directories
